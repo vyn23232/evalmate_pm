@@ -8,77 +8,33 @@ EvalMate is a comprehensive online peer evaluation platform designed to facilita
 
 ### Students
 - Submit and manage peer evaluations
-- View group memberships and project details
-- Track evaluation history and performance
-- Receive feedback and ratings
 
 ### Faculty/Instructors
-- Create and manage evaluation forms
-- Organize student groups
-- Monitor evaluation progress
 - Generate reports and analytics
-
 ---
 
 ## 🧑‍🎓 Student Features
 
-### 1. Dashboard Overview (`/student/dashboard`)
-**Current Implementation Status**: ✅ Complete
-- **Personal Welcome**: Personalized greeting with current date
-- **Statistics Display**:
-  - Active Groups count (3)
   - Pending Evaluations (5)
   - Completed Evaluations (12)
-  - Average Rating received (4.2)
-- **Quick Actions**:
-  - Complete pending evaluations
-  - View group memberships
-  - Update profile settings
 - **Recent Activity Timeline**:
   - Completed evaluations
-  - New assignments
-  - Group memberships
-- **Upcoming Deadlines**: Color-coded priority system (urgent, warning, normal)
-
 ### 2. Evaluation Management
 **Current Implementation Status**: 🚧 Placeholder Pages
-
-#### Pending Evaluations (`/student/evaluation/pending`)
-- View all assigned peer evaluations
-- Filter by group, deadline, or status
-- Quick access to evaluation forms
 - Progress tracking for multi-step evaluations
 
-#### Evaluation Form (`/student/evaluation/:evaluationId`)
-- **Anonymous Peer Assessment**:
   - Rating scales for different criteria
-  - Text feedback sections
   - File upload capabilities (optional)
 - **Form Validation**:
   - Required field checking
   - Character limits for feedback
-  - Submission confirmation
-- **Save & Resume**: Draft functionality for partial completions
-
-#### Evaluation History (`/student/evaluation/history`)
 - Chronological list of completed evaluations
 - View submitted responses (if permitted)
-- Performance trends over time
-- Feedback received from peers
-
-### 3. Group Management (`/student/group/:groupId`)
-**Current Implementation Status**: 🚧 Placeholder Page
 - **Group Overview**:
   - Member list with roles
-  - Project details and timeline
-  - Group performance metrics
-- **Member Profiles**: Basic information about group members
 - **Communication**: Group messaging (future feature)
 - **File Sharing**: Project documents and resources (future feature)
-
-### 4. Profile Management (`/student/profile`)
 **Current Implementation Status**: 🚧 Placeholder Page
-- **Personal Information**:
   - Name, email, student ID
   - Profile picture upload
   - Contact preferences
@@ -99,45 +55,28 @@ EvalMate is a comprehensive online peer evaluation platform designed to facilita
 - **Real-time Notifications**:
   - New evaluation assignments
   - Approaching deadlines
-  - Group updates
 - **Email Reminders**: Configurable email preferences
 - **In-app Alerts**: Badge system for pending actions
 
----
-
-## 👨‍🏫 Faculty Features
-
 ### 1. Administrative Dashboard (`/faculty/dashboard`)
-**Current Implementation Status**: 🚧 Placeholder Page
 - **Course Overview**:
   - Total enrolled students
   - Active evaluation cycles
   - Completion rates
-- **Recent Activities**:
-  - New submissions
   - Overdue evaluations
   - System alerts
 - **Quick Actions**:
   - Create new evaluation
   - Manage groups
   - View reports
-- **Analytics Summary**:
   - Participation rates
   - Average completion times
   - Student engagement metrics
-
-### 2. Form Builder (`/faculty/forms`)
-**Current Implementation Status**: 🚧 Placeholder Page
 - **Drag-and-Drop Interface**:
-  - Question types: Rating scales, multiple choice, text areas, checkboxes
   - Conditional logic for dynamic forms
   - Preview functionality
 - **Template Management**:
-  - Save custom templates
-  - Import/export form configurations
-  - Version control for form updates
 - **Evaluation Criteria**:
-  - Pre-defined skill categories
   - Custom criteria creation
   - Weighted scoring systems
 - **Form Settings**:

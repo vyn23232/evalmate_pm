@@ -249,7 +249,7 @@ function Reports() {
         </div>
       </Card>
 
-      {/* Submissions List */}
+      {/* Submissions List - Grouped by Team */}
       <Card className="reports__submissions">
         <div className="reports__submissions-header">
           <h3>Recent Submissions ({filteredSubmissions.length})</h3>
@@ -265,35 +265,48 @@ function Reports() {
           </div>
         ) : (
           <div className="reports__submissions-list">
-            {filteredSubmissions.map((submission) => (
-              <div 
-                key={submission.id} 
-                className={`reports__submission-item ${!submission.isRead ? 'reports__submission-item--unread' : ''}`}
-                onClick={() => handleViewSubmission(submission)}
-              >
-                <div className="reports__submission-info">
-                  <div className="reports__submission-header">
-                    <h4>{submission.formTitle}</h4>
-                    {!submission.isRead && <span className="reports__unread-badge">New</span>}
+            {/* Group submissions by teamId */}
+            {Object.entries(
+              filteredSubmissions.reduce((groups, sub) => {
+                const team = sub.teamId || 'No Team';
+                if (!groups[team]) groups[team] = [];
+                groups[team].push(sub);
+                return groups;
+              }, {})
+            ).map(([teamId, teamSubs]) => (
+              <div key={teamId} className="reports__team-group">
+                <h4 className="reports__team-heading">Team: {teamId}</h4>
+                {teamSubs.map((submission) => (
+                  <div 
+                    key={submission.id} 
+                    className={`reports__submission-item ${!submission.isRead ? 'reports__submission-item--unread' : ''}`}
+                    onClick={() => handleViewSubmission(submission)}
+                  >
+                    <div className="reports__submission-info">
+                      <div className="reports__submission-header">
+                        <h4>{submission.formTitle}</h4>
+                        {!submission.isRead && <span className="reports__unread-badge">New</span>}
+                      </div>
+                      <p className="reports__submission-meta">
+                        <strong>{submission.studentName}</strong> • {submission.course}
+                      </p>
+                      <div className="reports__submission-details">
+                        <span>📅 {formatDate(submission.submittedAt)}</span>
+                        <span>👥 {submission.teammates.length} teammates</span>
+                        <span 
+                          style={{ color: getRatingColor(submission.metadata.avgRating) }}
+                        >
+                          ⭐ {submission.metadata.avgRating}/5
+                        </span>
+                      </div>
+                    </div>
+                    <div className="reports__submission-actions">
+                      <Button variant="ghost" size="small">
+                        View Details →
+                      </Button>
+                    </div>
                   </div>
-                  <p className="reports__submission-meta">
-                    <strong>{submission.studentName}</strong> • Team: {submission.teamId} • {submission.course}
-                  </p>
-                  <div className="reports__submission-details">
-                    <span>📅 {formatDate(submission.submittedAt)}</span>
-                    <span>👥 {submission.teammates.length} teammates</span>
-                    <span 
-                      style={{ color: getRatingColor(submission.metadata.avgRating) }}
-                    >
-                      ⭐ {submission.metadata.avgRating}/5
-                    </span>
-                  </div>
-                </div>
-                <div className="reports__submission-actions">
-                  <Button variant="ghost" size="small">
-                    View Details →
-                  </Button>
-                </div>
+                ))}
               </div>
             ))}
           </div>
